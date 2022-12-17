@@ -1,5 +1,5 @@
-#ifndef DBMANAGER_H
-#define DBMANAGER_H
+#ifndef BASEDEDONNES_H
+#define BASEDEDONNES_H
 
 #include <QObject>
 #include <QSqlDatabase>
@@ -51,4 +51,4 @@ private:
     bool creerDataBase;
 };
 
-#endif // DBMANAGER_H
+#endif // BASEDEDOONES_H

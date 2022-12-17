@@ -6,7 +6,7 @@
 #include <string>
 #include <QString>
 
-#include "Utilisateur.h"
+#include "utilisateur.h"
 
 class Utilisateur;
 

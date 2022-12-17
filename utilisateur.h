@@ -3,7 +3,7 @@
 #include <QString>
 
 
-#include "GestionnaireTicket.h"
+#include "gestionnaireticket.h"
 class GestionnaireTicket;
 class Ticket;
 

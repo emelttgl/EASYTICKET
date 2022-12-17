@@ -2,13 +2,12 @@
 #include <iostream>
 
 /**
- * @brief ShareCount constructeur par défaut
+ * @brief easyticket constructeur par défaut
  * @param parent
  */
 easyticket::easyticket(QObject *parent): QObject(parent){
     easyticketBDD.createDataBase();
 
-    //On va ajouter au GestionnaireUtilisateur, tous les utilisateurs présent dans la base de donnée
     easyticketBDD.initialiserListeUtilisateur(utilisateurs);
 }
 

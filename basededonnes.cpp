@@ -3,12 +3,12 @@
 #include <QDateTime>
 
 /**
- * @brief The DbManager class qui permet de gérer les entrées et les sorties
+ * @brief The basededonnes class qui permet de gérer les entrées et les sorties
  * avec la base de donnée
  */
 
 /**
- * @brief DbManager Constrcteur par défaut
+ * @brief basededonnes Constrcteur par défaut
  * @param path de la base de donnée
  */
 Basededonnes::Basededonnes(const QString& path) : creerDataBase(false)
@@ -26,7 +26,7 @@ Basededonnes::Basededonnes(const QString& path) : creerDataBase(false)
 
 /**
  * @brief createDataBase permet de créer et d'initialiser la base de donnée
- * si le fichier ShareCountDataBase.db n'existe pas
+ * si le fichier nexiste pas
  */
 void Basededonnes::createDataBase() {
 
@@ -127,8 +127,8 @@ void Basededonnes::insererUtilisateur(const Utilisateur& user) const {
 
 /**
  * @brief initialiserListeUtilisateur permet de récupérer tous les utilisateurs dans la base de donnée
- * au lancement de k'application
- * @param sc
+ * au lancement de l'application
+ * @param users
  */
 void Basededonnes::initialiserListeUtilisateur(GestionnaireUtilisateur& users) {
     QSqlQuery query;
@@ -154,9 +154,9 @@ void Basededonnes::initialiserListeUtilisateur(GestionnaireUtilisateur& users) {
 }
 
 /**
- * @brief insererunGroupe permet d'inserer un groupe dans la table GroupesGestionBudget
- * et de mettre à jour la table UtilisateursParGroupesGDB
- * @param grp
+ * @brief insererunTicket permet d'inserer un Ticket
+ * et de mettre à jour la table Utilisateurs
+ * @param t
  * @param user
  */
 void Basededonnes::insererunTicket(const Ticket& t, const Utilisateur& user) {
@@ -192,8 +192,8 @@ void Basededonnes::insererunTicket(const Ticket& t, const Utilisateur& user) {
 }
 
 /**
- * @brief initialiserGroupeUtilisateur permet d'initialiser les groupes de l'utilisateur
- * @param grp
+ * @brief initailsation des tickets
+ * @param t
  * @param idUser
  */
 void Basededonnes::initialiserTicketUtilisateur(GestionnaireTicket& t, const QString& idUser) {
@@ -223,9 +223,9 @@ void Basededonnes::initialiserTicketUtilisateur(GestionnaireTicket& t, const QSt
 }
 
 /**
- * @brief appartientAuGroupe retourne vrai si user appartient a un groupe grp
+ * @brief
  * @param user
- * @param grp
+ * @param t
  * @return
  */
 bool Basededonnes::appartientAIngenieur(const QString& user, const QString& t) {
@@ -254,9 +254,9 @@ bool Basededonnes::appartientAIngenieur(const QString& user, const QString& t) {
 }
 
 /**
- * @brief ajouterParticipantAuGroupe ajoute le participant "user" au groupe "grp";
+ * @brief
  * @param user
- * @param grp
+ * @param t
  */
 void Basededonnes::ajouterIntervenantAuTicket(const QString& user, const QString& t) {
     QSqlQuery query;
@@ -277,9 +277,8 @@ void Basededonnes::ajouterIntervenantAuTicket(const QString& user, const QString
 }
 
 /**
- * @brief initialiserParticipants permet d'initialiser les participants au groupe grp
- * pour l'afficher
- * @param grp
+ * @brief
+ * @param t
  */
 QStringList Basededonnes::initialiserIntervenant(const QString& t) {
     QSqlQuery query;
@@ -306,10 +305,9 @@ QStringList Basededonnes::initialiserIntervenant(const QString& t) {
 }
 
 /**
- * @brief insererUneDepense permet d'insérer une dépense pour le groupe "grp"
- * dans la table Depenses
+ * @brief
  * @param dep
- * @param grp
+ * @param t
  */
 void Basededonnes::insererUnMessage(const Message &msg, const Ticket &t) {
     QSqlQuery query;
@@ -334,8 +332,8 @@ void Basededonnes::insererUnMessage(const Message &msg, const Ticket &t) {
 }
 
 /**
- * @brief initialiserDepensesGroupe permet d'initialiser toutes les dépenses du groupe
- * @param grp
+ * @brief
+ * @param t
  */
 void Basededonnes::initialiserMessageTicket(Ticket& t) {
     QSqlQuery query;
@@ -365,9 +363,9 @@ void Basededonnes::initialiserMessageTicket(Ticket& t) {
 }
 
 /**
- * @brief updateHistorique a chaque fois qu'une action est fête celle-ci
+ * @brief updateHistorique a chaque fois qu'une action est faite celle-ci
  * est enregistré dans la table historique.
- * @param grp
+ * @param t
  * @param action
  */
 void Basededonnes::updateHistorique(const QString& t, const QString& action) {

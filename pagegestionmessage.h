@@ -1,5 +1,5 @@
-#ifndef PAGEGESTIONDEBUDGET_H
-#define PAGEGESTIONDEBUDGET_H
+#ifndef PAGEGESTIONMESSAGE_H
+#define PAGEGESTIONMESSAGE_H
 
 #include "FenetrePrincipale.h"
 #include "easyticket.h"

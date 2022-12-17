@@ -8,7 +8,7 @@
 class Message;
 
 /**
- * @brief The GestionnaireMessage class permet de gérer une collection de dépenses:
+ * @brief The GestionnaireMessage class permet de gérer une collection de message:
  */
 class GestionnaireMessage
 {

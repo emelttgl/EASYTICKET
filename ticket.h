@@ -16,7 +16,7 @@ class Message;
 class GestionnaireMessage;
 
 /**
- * @brief classe abstraite de base pour GestionDeBudget et Cagnotte
+ * @brief classe abstraite de base pour GestionMessage
  */
 class Ticket
 {
