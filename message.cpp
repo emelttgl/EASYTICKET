@@ -38,7 +38,7 @@ QString Message::getCreateur() const {
 
 
 /**
- * @brief estRemboursee retourne vrai si la dépense est complétement remboursée,
+ * @brief avecRep retourne vrai si le message a une reponse,
  * faux sinon
  * @return
  */
@@ -48,7 +48,7 @@ bool Message::avecRep() const {
 
 
 /**
- * @brief setEstRemboursee positionne le boolean estRemboursee sur b
+ * @brief setaRep positionne le boolean arepondu sur b
  * @param b
  */
 void Message::setaRep(const bool &b) {

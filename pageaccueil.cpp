@@ -21,7 +21,7 @@ PageAccueil::PageAccueil(QWidget *parent) :
  * @brief PageAccueil
  * @param parent
  * @param fp fenêtre principale de l'application
- * @param sc sharcount (Sorte de système de l'application)
+ * @param et easyticket
  */
 PageAccueil::PageAccueil(QWidget *parent, FenetrePrincipale *fp, easyticket* et) :
     QWidget(parent),
@@ -52,8 +52,8 @@ void PageAccueil::setConnect() {
 }
 
 /**
- * @brief connexion envoie les informations de connexion a ShareCount
- * et accepte la connexion ou pas en fonction de la réponse de ShareCount
+ * @brief connexion envoie les informations de connexion a easyticket
+ * et accepte la connexion ou pas en fonction de la réponse de easyticket
  */
 void PageAccueil::connexion() {
     if (easyTicket->identifierUtilisateur(ui->lineEdit->text(), ui->lineEdit_2->text())) {

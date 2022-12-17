@@ -120,7 +120,7 @@ QStringList Ticket::MessageToString() {
 
 
 /**
- * @brief clearDepenses supprime toutes les dépenses de la collection
+ * @brief clearMessage supprime tous les messages de la collection
  */
 void Ticket::clearMessage() {
     message->clearMessage();
@@ -137,7 +137,7 @@ std::map<QString, double> Ticket::getRep(){
 
 
 /**
- * @brief setDettes On calcule les dettes de tous les participants du groupe, en fonction de leur dépense
+ * @brief
  */
 void Ticket::setRep(){
     for(std::map<QString, Utilisateur>::iterator it = intervenant->begin(); it != intervenant->end(); ++it){ //on initialise toutes les dettes à 0 €

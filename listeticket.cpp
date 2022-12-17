@@ -18,9 +18,9 @@ Listeticket::Listeticket(QWidget *parent) :
 }
 
 /**
- * @brief VueListeGroupe
+ * @brief Listeticket
  * @param fp fenêtre principale de l'application
- * @param sc sharcount (Sorte de système de l'application)
+ * @param et easyticket
  * @param parent
  */
 Listeticket::Listeticket(QWidget *parent, FenetrePrincipale *fp, easyticket* et) :
@@ -46,7 +46,7 @@ Listeticket::~Listeticket()
 
 
 /**
- * @brief setPageCreationGroupe met en place la page de création de groupe
+ * @brief setPageCreatioTicket met en place la page de création de ticket
  */
 void Listeticket::setPageCreationTicket(PageCreationTicket *pct){
     pageCreationTicket= pct;
@@ -55,14 +55,14 @@ void Listeticket::setPageCreationTicket(PageCreationTicket *pct){
 
 
 /**
- * @brief creerGroupeButtonClicked active un signal, qui sera capté par le slot qui affichera la page de création de groupe
+ * @brief creerTicketButtonClicked active un signal, qui sera capté par le slot qui affichera la page de création de ticket
  */
 void Listeticket::creerTicketButtonClicked(){
     //active le signal
 }
 
 /**
- * @brief getCreerGroupeButton retourne le bouton creerGroupe
+ * @brief getCreerTicketButton retourne le bouton creerTicket
  * @return
  */
 QPushButton *Listeticket::getCreerTicketButton(){
@@ -70,7 +70,7 @@ QPushButton *Listeticket::getCreerTicketButton(){
 }
 
 /**
- * @brief getListView retourne la listView (qui affiche tous les groupes)
+ * @brief getListView retourne la listView (qui affiche tous les tickets)
  * @return
  */
 QListView *Listeticket::getListView(){
@@ -92,7 +92,7 @@ void Listeticket::setConnect1(){
 }
 
 /**
- * @brief ajouterGroupe ajoute dans la listView le nom du groupe créé
+ * @brief ajouterTicket ajoute dans la listView le nom du ticket créé
  */
 void Listeticket::ajouterTicket() {
     tickets = easyTicket->getUtilisateurActif().getMesTicketToString();

@@ -123,7 +123,7 @@ void PageGestionMessage::on_ajouterMessageButton_clicked()
 
     } else {
         ajouterMessage = false;
-        QMessageBox::critical(this, "Erreur Ajout MESSAGE", "Montant invalide");
+        QMessageBox::critical(this, "Erreur Ajout MESSAGE", "message invalide");
     }
 
     if (ajouterMessage) {
@@ -178,7 +178,7 @@ void PageGestionMessage::setEquilibre(){
         intervenant = list.at(i);
         easyTicket->getTicketActif().ajouterUnIntervenant(easyTicket->getUtilisateur(intervenant));
     }
-    easyTicket->getTicketActif().setRep(); //initialisation des dettes (calcul des dettes)
+    easyTicket->getTicketActif().setRep();
     std::map<QString, double> rep = easyTicket->getTicketActif().getRep();
     QStringList equilibreRep;
     QString nom;
@@ -205,9 +205,9 @@ void PageGestionMessage::setEquilibre(){
         QModelIndex vIndex = model->index(i, 0);
         QMap<int, QVariant> vMap = model->itemData(vIndex);
         if(rx.exactMatch(equilibreRep.at(i))){
-            vMap.insert(Qt::BackgroundRole, QVariant(QBrush(Qt::red))); // Si l'utilisateur doit de l'argent au groupe
+            vMap.insert(Qt::BackgroundRole, QVariant(QBrush(Qt::red)));
         }else{
-            vMap.insert(Qt::BackgroundRole, QVariant(QBrush(Qt::green))); // Si l'utilisateur a avancé plus d'argent que les autres
+            vMap.insert(Qt::BackgroundRole, QVariant(QBrush(Qt::green)));
         }
         model->setItemData(vIndex, vMap);
 
@@ -236,7 +236,6 @@ void PageGestionMessage::miseAJourMessage() {
  */
 void PageGestionMessage::on_reglerMessage_clicked()
 {
-    //ui->depenseListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
     QModelIndex index = ui->messageListView->currentIndex();
     QString itemText = index.data(Qt::DisplayRole).toString();
     std::string s = itemText.toStdString();

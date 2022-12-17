@@ -19,7 +19,7 @@ PageCreationCompte::PageCreationCompte(QWidget *parent) :
 /**
  * @brief PageCreationCompte
  * @param fp fenêtre principale de l'application
- * @param sc sharcount (Sorte de système de l'application)
+ * @param et easyticket
  * @param parent
  */
 PageCreationCompte::PageCreationCompte(QWidget *parent, FenetrePrincipale *fp, easyticket* et) :
@@ -53,7 +53,7 @@ void PageCreationCompte::setConnexion() {
 
 /**
  * @brief onPushButtonCreerCompte Envoie les informations entré par l'utilisateur
- * a ShareCount pour les traiter.
+ * a easyticket pour les traiter.
  */
 void PageCreationCompte::onPushButtonCreerCompte() {
     Utilisateur u;

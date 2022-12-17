@@ -35,8 +35,8 @@ int GestionnaireTicket::size() const {
 }
 
 /**
- * @brief findTicket renvoie vrai si grp est présent dans la collection, faux sinon
- * @param grp
+ * @brief findTicket renvoie vrai si t est présent dans la collection, faux sinon
+ * @param t
  * @return
  */
 bool GestionnaireTicket::findTicket(const QString& t) const {

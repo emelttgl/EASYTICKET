@@ -9,7 +9,6 @@ FenetrePrincipale::FenetrePrincipale(QWidget *parent) :
 {
     ui->setupUi(this);
     pageActive = nullptr;
-    qDebug()<<QSqlDatabase:: drivers();
     resize(900, 1000);
 }
 

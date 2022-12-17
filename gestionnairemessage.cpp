@@ -65,7 +65,7 @@ std::vector<Message>::iterator GestionnaireMessage::end() {
 
 
 /**
- * @brief clearMessage supprimme toutes les dépenses de la collection
+ * @brief clearMessage supprimme tous les messages de la collection
  */
 void GestionnaireMessage::clearMessage() {
     messages.clear();

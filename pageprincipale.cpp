@@ -39,12 +39,12 @@ PagePrincipale::PagePrincipale(QWidget *parent, FenetrePrincipale *fp, easyticke
 }
 
 /**
- * @brief afficherGroupe place la page de gestion de budget au centre de la mainWindow
+ * @brief afficherTicket place la page au centre de la mainWindow
  */
 void PagePrincipale::afficherTicket(){
     PageGestionMessage *pgdm = new PageGestionMessage(pwindow, pwindow, easyTicket);
 
-    //qDebug() << vlg->getListView()->currentIndex().data().toString();
+    //qDebug() << lt->getListView()->currentIndex().data().toString();
     pgdm->getLabelNomTicket()->setText(lt->getListView()->currentIndex().data().toString());
     setCentralWidget(pgdm);
     pgdm->miseAJourIntervenant();
@@ -60,7 +60,7 @@ PagePrincipale::~PagePrincipale()
 
 
 /**
- * @brief ajouterGroupe place la page de création de groupe au centre de la mainWindow
+ * @brief ajouterTicket place la page de création de ticket au centre de la mainWindow
  */
 void PagePrincipale::ajouterTicket()
 {
@@ -73,14 +73,14 @@ void PagePrincipale::ajouterTicket()
  * @brief setConnect connecte les signaux et slots
  */
 void PagePrincipale::setConnect(Listeticket *lt){
-    QObject::connect(lt->getCreerTicketButton(), &QPushButton::clicked, this, &PagePrincipale::ajouterTicket); //lors d'un clique sur le bouton "Créer un groupe" de la vueListeGroupe on affiche la pageCréation groupe
+    QObject::connect(lt->getCreerTicketButton(), &QPushButton::clicked, this, &PagePrincipale::ajouterTicket);
     QObject::connect(lt->getListView(), SIGNAL(clicked(const QModelIndex)),this,SLOT(afficherTicket()));
     QObject::connect(ui->actionDeconnexion, SIGNAL(triggered(bool)), this->parent(), SLOT(deconnexion()));
 }
 
 
 /**
- * @brief getShareCount retourne le ShareCount
+ * @brief geteasyticket retourne le easyticket
  * @return
  */
 easyticket* PagePrincipale::geteasyticket() {

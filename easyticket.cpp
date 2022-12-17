@@ -73,8 +73,8 @@ Utilisateur& easyticket::getUtilisateurActif() {
 }
 
 /**
- * @brief inserGroupe permet d'inserer un groupe dans la base de donnée
- * @param grp
+ * @brief inserTicket permet d'inserer un ticket dans la base de donnée
+ * @param t
  * @param user
  */
 void easyticket::inserTicket(const Ticket& t, const Utilisateur& user) {
@@ -82,8 +82,8 @@ void easyticket::inserTicket(const Ticket& t, const Utilisateur& user) {
 }
 
 /**
- * @brief findGroupe retourne vrai si grp fait partie des groupes d'utilisateurActif
- * @param grp
+ * @brief findTicket retourne vrai si t fait partie des tickets d'utilisateurActif
+ * @param t
  * @return
  */
 bool easyticket::findTicket(const QString& t) const {
@@ -91,9 +91,9 @@ bool easyticket::findTicket(const QString& t) const {
 }
 
 /**
- * @brief appartientAuGroupe retourne vrai si user appartient à grp
+ * @brief appartientAuTicket retourne vrai si user appartient à t
  * @param user
- * @param grp
+ * @param t
  * @return
  */
 bool easyticket::appartientAuTicket(const QString& user, const QString& t) {
@@ -101,25 +101,25 @@ bool easyticket::appartientAuTicket(const QString& user, const QString& t) {
 }
 
 /**
- * @brief ajouterParticipantAuGroupe ajoute le participant "user" au groupe "grp";
+ * @brief
  * @param user
- * @param grp
+ * @param t
  */
 void easyticket::ajouterIntervenantAuTicket(const QString& user, const QString& grp) {
     easyticketBDD.ajouterIntervenantAuTicket(user, grp);
 }
 
 /**
- * @brief initialiserParticipants permet d'initialiser les participants au groupe grp
+ * @brief initialiserIntervenant permet d'initialiser les intervenants au t
  * pour l'afficher
- * @param grp
+ * @param t
  */
 QStringList easyticket::initialiserIntervenant(const QString& t) {
     return easyticketBDD.initialiserIntervenant(t);
 }
 
 /**
- * @brief ajouterUneDepense permet d'ajouter une dépense au groupe actif
+ * @brief ajouterUnMessage permet d'ajouter un message au ticket
  * @param dep
  */
 void easyticket::ajouterUnMessage(Message& msg) {
@@ -128,7 +128,7 @@ void easyticket::ajouterUnMessage(Message& msg) {
 }
 
 /**
- * @brief getGroupeActif retourne le groupe actif
+ * @brief getTicketActif retourne le ticket actif
  * @return
  */
 Ticket& easyticket::getTicketActif() {
@@ -136,8 +136,8 @@ Ticket& easyticket::getTicketActif() {
 }
 
 /**
- * @brief setGroupeActif positionne le groupe actif
- * @param grp
+ * @brief setTicketActif positionne le ticket actif
+ * @param t
  */
 void easyticket::setTicketActif(Ticket& t) {
     TicketActif = t;

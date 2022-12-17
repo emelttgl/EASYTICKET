@@ -57,7 +57,7 @@ QString Utilisateur::getMail() const {
 
 /**
  * @brief ajouterAMesTicket permet d'ajouter un Ticket
- * @param grp
+ * @param t
  */
 void Utilisateur::ajouterAMesTicket(Ticket& t) {
     mesTicket->ajouterTicket(t);
