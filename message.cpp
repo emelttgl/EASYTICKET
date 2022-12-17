@@ -46,6 +46,15 @@ bool Message::avecRep() const {
     return aRepondu;
 }
 
+/**
+ * @brief
+ * @return
+ */
+QString Message::getVb() const {
+    return vb;
+}
+
+
 
 /**
  * @brief setaRep positionne le boolean arepondu sur b

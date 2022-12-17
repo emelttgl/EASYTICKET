@@ -35,8 +35,7 @@ Listeticket::Listeticket(QWidget *parent, FenetrePrincipale *fp, easyticket* et)
     QAbstractItemModel *model = new QStringListModel(tickets);
     ui->listView->setModel(model);
 
-    //setConnect(pageCreationGroupe);
-    //setConnexion();
+
 }
 
 Listeticket::~Listeticket()
@@ -46,19 +45,19 @@ Listeticket::~Listeticket()
 
 
 /**
- * @brief setPageCreatioTicket met en place la page de création de ticket
+ * @brief setPageCreationTicket met en place la page de création de ticket
  */
 void Listeticket::setPageCreationTicket(PageCreationTicket *pct){
-    pageCreationTicket= pct;
+    pageCreationTicket = pct;
     setConnect(pageCreationTicket);
 }
 
 
 /**
- * @brief creerTicketButtonClicked active un signal, qui sera capté par le slot qui affichera la page de création de ticket
+ * @brief creerTicketButtonClicked active un signal, qui sera capté par le slot qui affichera la page de création de Ticket
  */
 void Listeticket::creerTicketButtonClicked(){
-    //active le signal
+
 }
 
 /**
@@ -81,7 +80,7 @@ QListView *Listeticket::getListView(){
  * @brief setConnect connecte les signaux et slots
  */
 void Listeticket::setConnect(PageCreationTicket *pct){
-    QObject::connect(pct->getCreerTicketButton(), &QPushButton::clicked, this, &Listeticket::ajouterTicket); //lors d'un clique sur le bouton "Créer un groupe" de la pageCreationGroupe on affiche le groupe crée dans la listView
+    QObject::connect(pct->getCreerTicketButton(), &QPushButton::clicked, this, &Listeticket::ajouterTicket);
 }
 
 /**

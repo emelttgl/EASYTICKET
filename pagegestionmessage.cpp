@@ -8,7 +8,7 @@
 #include <QDateEdit>
 
 /**
- * @brief PageGestionMessagae
+ * @brief PageGestionMessage
  * @param parent
  */
 PageGestionMessage::PageGestionMessage(QWidget *parent) :
@@ -21,6 +21,7 @@ PageGestionMessage::PageGestionMessage(QWidget *parent) :
 /**
  * @brief PageGestionMessage
  * @param fp fenêtre principale de l'application
+ * @param et easyticket
  * @param parent
  */
 PageGestionMessage::PageGestionMessage(QWidget *parent, FenetrePrincipale *fp, easyticket* et):
@@ -35,7 +36,7 @@ PageGestionMessage::PageGestionMessage(QWidget *parent, FenetrePrincipale *fp, e
 }
 
 /**
- * @brief getLabelNomTicket
+ * @brief getLabelNomTicket retourne le label (qui affiche le nom du Ticket)
  * @return
  */
 QLabel *PageGestionMessage::getLabelNomTicket(){
@@ -71,7 +72,7 @@ void PageGestionMessage::on_ajouterMessageButton_clicked()
     QLabel * labelC = new QLabel();
 
     labelA->setText("Titre :");
-    labelB->setText("Message");
+    labelB->setText("Message:");
     labelC->setText("Date :");
 
     QDialogButtonBox * buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -109,13 +110,13 @@ void PageGestionMessage::on_ajouterMessageButton_clicked()
         messageTxt = QString::fromStdString(streamObj.str());
 
         if (titre.isEmpty()) {
-            titre.append("Message ");
+            titre.append("message ");
             titre.append(QString::fromStdString(std::to_string(easyTicket->getTicketActif().nbMessage() + 1)));
         }
 
         if (!date.isValid()) {
             ajouterMessage = false;
-            QMessageBox::critical(this, "Erreur Ajout Message", "Date invalide");
+            QMessageBox::critical(this, "Erreur Ajout message", "Date invalide");
         } else {
             dateTxt = date.toString("dd/MM/yyyy");
         }
@@ -123,7 +124,7 @@ void PageGestionMessage::on_ajouterMessageButton_clicked()
 
     } else {
         ajouterMessage = false;
-        QMessageBox::critical(this, "Erreur Ajout MESSAGE", "message invalide");
+        QMessageBox::critical(this, "Erreur Ajout Message", "Message invalide");
     }
 
     if (ajouterMessage) {
@@ -137,10 +138,10 @@ void PageGestionMessage::on_ajouterMessageButton_clicked()
 }
 
 /**
- * @brief on_ajouterIntervenantButton_clicked ajoute un intervnenant
+ * @brief
  */
 void PageGestionMessage::on_ajouterIntervenantButton_clicked() {
-    QString user = QInputDialog::getText(this, "Ajouter Un Intervnant", "Identifiant Utilisateur: ");
+    QString user = QInputDialog::getText(this, "Ajouter Un Intervenant", "Identifiant Utilisateur: ");
 
     bool ajouter = false;
 
@@ -149,7 +150,7 @@ void PageGestionMessage::on_ajouterIntervenantButton_clicked() {
             ajouter = true;
             if (easyTicket->appartientAuTicket(user, ui->label->text())) {
                 ajouter = false;
-                QMessageBox::critical(this, "Erreur Ajout Intervenant", "");
+                QMessageBox::critical(this, "Erreur Ajout Intervenant", "Cet intervenant appartient déjà à ce ticket");
             }
         } else {
             ajouter = false;
@@ -168,7 +169,7 @@ void PageGestionMessage::on_ajouterIntervenantButton_clicked() {
 }
 
 /**
- * @brief
+ * @brief setEquilibre affichage des reponses dans une listView, sur l'ensemble des messages
  */
 void PageGestionMessage::setEquilibre(){
     QString intervenant;
@@ -180,13 +181,13 @@ void PageGestionMessage::setEquilibre(){
     }
     easyTicket->getTicketActif().setRep();
     std::map<QString, double> rep = easyTicket->getTicketActif().getRep();
-    QStringList equilibreRep;
+    QStringList eqRep;
     QString nom;
     QString val;
     for(std::map<QString, double>::iterator it = rep.begin(); it != rep.end(); ++it){
         val = QString::number(it->second);
         nom = it->first;
-        equilibreRep << nom + " : "+val+" €";
+        eqRep << nom + "  ";
     }
 
     QStandardItemModel *model = new QStandardItemModel();
@@ -195,16 +196,16 @@ void PageGestionMessage::setEquilibre(){
     ui->listView_3->setViewMode(QListView::ListMode);
 
     QRegExp rx(".+-{1}.+"); //Cherche un '-', pour trouver un nombre négatif
-    for(int i=0;i<equilibreRep.size();i++){
-        list1 << new QStandardItem(equilibreRep.at(i));
+    for(int i=0;i<eqRep.size();i++){
+        list1 << new QStandardItem(eqRep.at(i));
     }
     model->appendColumn(list1);
 
-    for(int i=0;i<equilibreRep.size();i++){
+    for(int i=0;i<eqRep.size();i++){
 
         QModelIndex vIndex = model->index(i, 0);
         QMap<int, QVariant> vMap = model->itemData(vIndex);
-        if(rx.exactMatch(equilibreRep.at(i))){
+        if(rx.exactMatch(eqRep.at(i))){
             vMap.insert(Qt::BackgroundRole, QVariant(QBrush(Qt::red)));
         }else{
             vMap.insert(Qt::BackgroundRole, QVariant(QBrush(Qt::green)));
@@ -216,7 +217,7 @@ void PageGestionMessage::setEquilibre(){
 }
 
 /**
- * @brief miseAJourIntervennat affiche les intervennats
+ * @brief miseAJourIntervenant affiche les intervenants dans la listView
  */
 void PageGestionMessage::miseAJourIntervenant() {
     QAbstractItemModel *model = new QStringListModel(easyTicket->initialiserIntervenant(ui->label->text()));
@@ -224,7 +225,7 @@ void PageGestionMessage::miseAJourIntervenant() {
 }
 
 /**
- * @brief miseAJourMessage affiche les messages dans la listView des messages
+ * @brief miseAJourDepenses affiche les dépenses dans la listView des dépenses
  */
 void PageGestionMessage::miseAJourMessage() {
     QAbstractItemModel *model = new QStringListModel(easyTicket->getTicketActif().MessageToString());
@@ -232,16 +233,21 @@ void PageGestionMessage::miseAJourMessage() {
 }
 
 /**
- * @brief on_reglerMessage_clicked ajoute
+ * @brief on_reglerMessage_clicked
  */
 void PageGestionMessage::on_reglerMessage_clicked()
 {
+    //ui->depenseListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
     QModelIndex index = ui->messageListView->currentIndex();
     QString itemText = index.data(Qt::DisplayRole).toString();
     std::string s = itemText.toStdString();
     std::string delimiter = " :";
     std::string token = s.substr(0, s.find(delimiter));
     std::cout << token << std::endl;
+
+    int nbUsers = easyTicket->getNombreUtilisateurs();
+
+    QString vb = easyTicket->getTicketActif().getMessage().getMessage(token).getVb();
 
 
     miseAJourMessage();

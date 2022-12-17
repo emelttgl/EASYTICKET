@@ -28,6 +28,8 @@ public:
 
     QString getNom() const;
 
+    QString getVb() const;
+
     QString getdate() const;
 
 
@@ -36,6 +38,7 @@ private:
     QString nom;
     QString date;
     QString createur;
+    QString vb;
     bool aRepondu;
 
 
